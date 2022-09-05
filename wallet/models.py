@@ -32,6 +32,7 @@ class Account(models.Model):
     account_type = models.CharField(max_length=13,null=True)
     account_balance = models.IntegerField()
     wallet = models.ForeignKey("Wallet",on_delete=models.CASCADE,related_name='Account_wallet')
+
 class Transaction(models.Model):
     message = models.CharField(max_length=100,null=True)
     wallet = models.ForeignKey("Wallet",on_delete=models.CASCADE,related_name='Transaction_wallet')
