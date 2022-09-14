@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <th>
+            <td>Account</td>
+            <td>Wallet</td>
+            <td>Currency</td>
+            <td>date_of_issue</td>
+            <td>Transaction</td>
+            <td>issuer</td>
+         
+        </th>
+        {% for thirdparty in  thirdparty%}
+        <tr>
+        <td> {{thirdparty.Account}}</td>
+        <td> {{thirdparty.Wallet}}</td>
+        <td> {{thirdparty.Currency}}</td>
+        <td> {{thirdparty.date_issue}}</td>
+        <td> {{thirdparty.Transaction}}</td>
+        <td> {{thirdparty.issuer}}</td>
+    
+        
+        <tr>
+            {% endfor %}
+    </table>
+
+
+</body>
+</html>
