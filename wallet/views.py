@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from wallet.models import Account, Currency, Customer, Loan, Notification, Receipt, Reward, Thirdparty, Transaction
 from .forms import CustomerRegestrationForm,CurrencyRegestrationForm,WalletRegestrationForm
@@ -115,7 +115,26 @@ def list_reward(request):
     return render(request,"wallet/Reward_list.html", {"Wallet":reward})                   
                                                                           
                                                          
-                                                                            
+def customer_profile(request,id) :
+    customer=Customer.objects.get(id=id)
+    return render(request,"wallet/customer_profile.html",{"customer":customer} )    
+
+
+def edit_profile(request,id):
+    customer=Customer.objects.get(id=id)
+    if request.method=="POST":
+        form=CustomerRegestrationForm(request.POST,instance=customer)
+        
+        if form. is_valid():
+            form.save()
+            
+        return redirect("customer_profile", id=customer.id)
+    else:
+        form =CustomerRegestrationForm(instance=customer)
+        return render(request,"wallet/edit_profile.html",{"form":form})
+    
+
+                                                                          
                                                          
                                                                             
                                                             

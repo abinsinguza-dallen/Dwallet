@@ -1,7 +1,7 @@
 from django.urls import path
 
 from wallet.models import Notification
-from .views import currency, list_Currencies, list_Customers, regester_customer, reward,transaction,wallet,account,card,thirdparty,notification,loan,reciept
+from .views import currency, customer_profile, edit_profile, list_Currencies, list_Customers, regester_customer, reward,transaction,wallet,account,card,thirdparty,notification,loan,reciept
 from .views import list_Wallets,list_Thirdparty,list_Notification,list_Recipient,list_loan
 
 urlpatterns = [
@@ -25,6 +25,11 @@ urlpatterns = [
     path("Notifications/",list_Notification, name="list_Notification"),
     path("Recipients/",list_Recipient, name="list_Recipient"),
     path("Loans/",list_loan ,name="list_loan"),
+    
+    # single object view
+path ("Customers/<int:id>/", customer_profile,name="customer_profile"),
+
+path("Customers/edit/<int:id>/", edit_profile,name="edit_profile"),
 
 
 
